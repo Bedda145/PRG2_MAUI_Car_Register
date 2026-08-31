@@ -1,4 +1,6 @@
-﻿namespace PRG_MAUI_Car_Register
+﻿using System.Text.RegularExpressions;
+
+namespace PRG_MAUI_Car_Register
 {
     class Vehicle
     {
@@ -8,6 +10,8 @@
         private string registrationNumber = string.Empty;
         private string manufacturer = string.Empty;
         private string model = string.Empty;
+
+        private int year;
 
         // Konstruktor (en metod med samma namn som klassen, som returnerar ett objekt)
         public Vehicle(Type vehicleType) // en konstruktor kan, men måste inte, ta parametrar
@@ -73,6 +77,25 @@
                     throw new ArgumentException("Modell måste anges.");
 
                 this.model = value.Trim();
+            }
+        }
+
+        public string Year
+        {
+            get { return year == 0 ? string.Empty : year.ToString(); }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("En årsmodell måste anges, till exempel 2024.");
+
+                string input = value.Trim();
+
+                if (!Regex.IsMatch(input, @"^[1-2][0-9][0-9][0-9]@"))
+                    throw new ArgumentException("Årsmodellen måste skrivar som fyra siffror, till exempel 2024.");
+
+                year = int.Parse(input);
+
             }
         }
 
