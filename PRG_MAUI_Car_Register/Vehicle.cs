@@ -11,6 +11,8 @@ namespace PRG_MAUI_Car_Register
         private string manufacturer = string.Empty;
         private string model = string.Empty;
 
+        private const int FirstProductionYear = 1895;
+
         private int year;
 
         // Konstruktor (en metod med samma namn som klassen, som returnerar ett objekt)
@@ -91,15 +93,21 @@ namespace PRG_MAUI_Car_Register
 
                 string input = value.Trim();
 
-                if (!Regex.IsMatch(input, @"^[1-2][0-9][0-9][0-9]@"))
+                if (!Regex.IsMatch(input, @"^[1-2][0-9][0-9][0-9]$"))
                     throw new ArgumentException("Årsmodellen måste skrivar som fyra siffror, till exempel 2024.");
 
-                year = int.Parse(input);
+                int inputYear = int.Parse(input);
+                int currentYear = DateTime.Now.Year;
+
+                if (inputYear < FirstProductionYear || inputYear > currentYear)
+                    throw new ArgumentException($"Årsmodellen måste ligga mellan {FirstProductionYear} och {currentYear}.");
+
+                year = inputYear;
+
 
             }
         }
 
-        //TODO Modell ska valideras, sparas i objektet och visas i UI
         public string Manufacturer
         {
             get { return manufacturer; }
