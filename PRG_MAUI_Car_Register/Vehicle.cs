@@ -28,35 +28,25 @@ namespace PRG_MAUI_Car_Register
 
             set
             {
-                if (!String.IsNullOrWhiteSpace(value))
-                {
-                    if (value.Length == 6)
-                    {
-                        for (int i = 0; i < 3; i++)
-                        {
-                            if (!char.IsLetter(value[i]))
-                                throw new ArgumentException("Inkorrekt registreringsnummer: De första tre tecknen måste vara bokstäver.");
-                        }
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Ett registeringsnummer måste anges.");
 
-                        for (int i = 3; i < 6; i++)
-                        {
-                            if (i < 5)
-                            {
-                                if (!char.IsDigit(value[i]))
-                                    throw new ArgumentException("Inkorrekt registreringsnummer: Det fjärde och femte tecknet måste vara siffror.");
-                            }
-                            else
-                            {
-                                if (!char.IsDigit(value[i]) && !char.IsLetter(value[i]))
-                                    throw new ArgumentException("Inkorrekt registreringsnummer: Det sjätte tecknet måste vara en siffra eller en bokstav.");
-                            }
-                        }
-                    }
-                }
-                else
+                if (value.Length != 6)
+                    throw new ArgumentException("Ett registeringsnummer måste bestå av exakt 6 tecken, tre bokstäver, två siffror och en siffra eller bokstav.");
+
+                for (int i = 0; i < 3; i++)
                 {
-                    throw new ArgumentException("Ett registreringsnummer måste bestå av exakt 6 tecken, med tre bokstäver följt av två siffror och en siffra eller bokstav.");
+                    if (!char.IsLetter(value[i]))
+                        throw new ArgumentException("Inkorrekt registreringsnummer: De första tre tecknen måste vara bokstäver.");
                 }
+
+                for (int i = 3; i < 5; i++)
+                {
+                    if (!char.IsDigit(value[i]))
+                        throw new ArgumentException("Inkorrekt registreringsnummer: Det fjärde och femte tecknet måste vara siffror.");
+                }
+                if (!char.IsDigit(value[5]) && !char.IsLetter(value[5]))
+                    throw new ArgumentException("Inkorrekt registeringsnummer: Det sjätte tecknet måste vara en siffra eller en bokstav.");
 
                 registrationNumber = value.ToUpper();
             }
