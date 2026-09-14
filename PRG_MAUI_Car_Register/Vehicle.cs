@@ -69,7 +69,6 @@ namespace PRG_MAUI_Car_Register
             set { this.vehicleType = value; }
         }
 
-        //TODO Tillverkare ska valideras, sparas i objektet och visas i UI
         public string Model
         {
             get { return model; }
@@ -119,14 +118,9 @@ namespace PRG_MAUI_Car_Register
                 this.manufacturer = value.Trim();
             }
         }
-
-        //TODO Lägg till möjligheten att spara realistisk årsmodell, validera, spara och visa i objektet och visas i UI. Tips: Regex.IsMatch()
-
-
-        //TODO Modifiera overriden på ToString() så att allt visas som önskat i UIs listBox
         public override string ToString()
         {
-            return this.registrationNumber + "\t" + this.vehicleType + "\t" + this.manufacturer + "\t" + this.model;
+            return $"{registrationNumber}\t{vehicleType}\t{manufacturer}\t{model}\t{Year}";
         }
     }
 }

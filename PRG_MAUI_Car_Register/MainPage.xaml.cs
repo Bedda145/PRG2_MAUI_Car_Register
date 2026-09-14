@@ -19,6 +19,7 @@
                 vehicle.RegistrationNumber = entryRegistrationNumber.Text; ;
                 vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
+                vehicle.Year = entryYear.Text;
 
                 vehicleList.Add(vehicle);
                 listViewVehicles.ItemsSource = null;
@@ -80,6 +81,7 @@
                                          $"Registreringsnummer: {foundVehicle.RegistrationNumber}\n" +
                                          $"Tillverkare: {foundVehicle.Manufacturer}\n" +
                                          $"Modell: {foundVehicle.Model}\n" +
+                                         $"Årsmodell: {foundVehicle.Year}\n" +
                                          $"Typ: {foundVehicle.VehicleType}";
             }
             else
@@ -93,6 +95,7 @@
             entryRegistrationNumber.Text = string.Empty;
             entryManufacturer.Text = string.Empty;
             entryModel.Text = string.Empty;
+            entryYear.Text = string.Empty;
         }
     }
 }
