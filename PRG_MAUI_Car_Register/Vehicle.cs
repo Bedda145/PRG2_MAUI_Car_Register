@@ -72,13 +72,7 @@ namespace PRG_MAUI_Car_Register
         public string Model
         {
             get { return model; }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Modell måste anges.");
-
-                this.model = value.Trim();
-            }
+            set { model = ValidateName(value, "Modell"); }
         }
 
         public string Year
@@ -110,13 +104,33 @@ namespace PRG_MAUI_Car_Register
         public string Manufacturer
         {
             get { return manufacturer; }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Märke måste anges.");
+            set { manufacturer = ValidateName(value, "Märke"); }
+        }
 
-                this.manufacturer = value.Trim();
+        private string ValidateName(string value, string fieldName)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException($"{fieldName} måste anges.");
+
+            string input = value.Trim();
+
+            if (input.Length > 30)
+                throw new ArgumentException($"{fieldName} får vara högst 30 tecken");
+
+            bool hasLetter = false;
+
+            foreach (char c in input)
+            {
+                if (char.IsLetter(c))
+                    hasLetter = true;
+                else if (!char.IsDigit(c) && c != ' ' && c != '-')
+                    throw new ArgumentException($"{fieldName} får bara innehålla bokstäver, siffror, mellanslag och bindestreck. Tecknet '{c}' är inte tillåtet.");
             }
+
+            if (!hasLetter)
+                throw new ArgumentException($"{fieldName} måste innehålla minst en bokstav.");
+
+            return input;
         }
         public override string ToString()
         {
