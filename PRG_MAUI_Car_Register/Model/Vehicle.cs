@@ -115,7 +115,7 @@ namespace PRG_MAUI_Car_Register.Model
             return input;
         }
 
-        public abstract string getDescription();
+        public abstract string GetDescription();
         public override string ToString()
         {
             return $"{registrationNumber}\t{manufacturer}\t{model}\t{Year}";
