@@ -2,7 +2,7 @@
 
 namespace PRG_MAUI_Car_Register.Model
 {
-    class Vehicle
+    abstract class Vehicle
     {
         // Medlemsvariabler
         private string registrationNumber = string.Empty;
@@ -114,6 +114,8 @@ namespace PRG_MAUI_Car_Register.Model
 
             return input;
         }
+
+        public abstract string getDescription();
         public override string ToString()
         {
             return $"{registrationNumber}\t{manufacturer}\t{model}\t{Year}";
