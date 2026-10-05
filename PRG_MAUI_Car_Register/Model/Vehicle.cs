@@ -5,8 +5,6 @@ namespace PRG_MAUI_Car_Register.Model
     class Vehicle
     {
         // Medlemsvariabler
-        public enum Type { Bil, MC, Lastbil };
-        private Type vehicleType;
         private string registrationNumber = string.Empty;
         private string manufacturer = string.Empty;
         private string model = string.Empty;
@@ -16,9 +14,8 @@ namespace PRG_MAUI_Car_Register.Model
         private int year;
 
         // Konstruktor (en metod med samma namn som klassen, som returnerar ett objekt)
-        public Vehicle(Type vehicleType) // en konstruktor kan, men måste inte, ta parametrar
+        protected Vehicle() // en konstruktor kan, men måste inte, ta parametrar
         {
-            this.vehicleType = vehicleType;
         }
 
         // Get-Set för att hålla variablerna privata, och för att validera inkommande värden från UI (user interface, användargränssnittet)
@@ -52,12 +49,7 @@ namespace PRG_MAUI_Car_Register.Model
             }
         }
 
-        // Fordonstyp tas in från dropdown-menyn, och behöver därför inte valideras
-        public Type VehicleType
-        {
-            get { return vehicleType; }
-            set { this.vehicleType = value; }
-        }
+        
 
         public string Model
         {
@@ -124,7 +116,7 @@ namespace PRG_MAUI_Car_Register.Model
         }
         public override string ToString()
         {
-            return $"{registrationNumber}\t{vehicleType}\t{manufacturer}\t{model}\t{Year}";
+            return $"{registrationNumber}\t{manufacturer}\t{model}\t{Year}";
         }
     }
 }
