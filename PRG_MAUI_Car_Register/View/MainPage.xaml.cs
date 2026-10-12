@@ -1,15 +1,17 @@
-﻿    using PRG_MAUI_Car_Register.Model;
+﻿using System.Collections.ObjectModel;    
+using PRG_MAUI_Car_Register.Model;
 
     namespace PRG_MAUI_Car_Register.View
     {
     public partial class MainPage : ContentPage
     {
-        List<Vehicle> vehicleList = new List<Vehicle>();
+        ObservableCollection<Vehicle> vehicleList = new ObservableCollection<Vehicle>();
 
         public MainPage()
         {
             InitializeComponent();
             pickerType.SelectedIndex = 0;
+            listViewVehicles.ItemsSource = vehicleList;
         }
 
         private void OnRegisterClicked(object sender, EventArgs e)
@@ -39,8 +41,7 @@
                 vehicle.Year = entryYear.Text;
 
                 vehicleList.Add(vehicle);
-                listViewVehicles.ItemsSource = null;
-                listViewVehicles.ItemsSource = vehicleList;
+                radioAll.IsChecked = true;
 
                 ClearTextFields();
             }
