@@ -93,12 +93,7 @@
 
             if (foundVehicle != null)
             {
-                labelSearchResult.Text = $"Fordon hittat:\n" +
-                                         $"Registreringsnummer: {foundVehicle.RegistrationNumber}\n" +
-                                         $"Tillverkare: {foundVehicle.Manufacturer}\n" +
-                                         $"Modell: {foundVehicle.Model}\n" +
-                                         $"Årsmodell: {foundVehicle.Year}\n" +
-                                         $"Typ: {foundVehicle.VehicleType}";
+                labelSearchResult.Text = $"Fordon hittat:\n{foundVehicle.GetDescription()}";
             }
             else
             {

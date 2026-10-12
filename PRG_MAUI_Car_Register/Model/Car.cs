@@ -17,7 +17,7 @@
             }
         }
 
-        public override string getDescription()
+        public override string GetDescription()
         {
             return $"{RegistrationNumber}\tBil\t{Manufacturer}\t{Model}\t{Year}";
         }
