@@ -56,20 +56,19 @@
         {
             if (e.Value != true) return;
 
-            // Skapa en temporär filtrerad lista baserat på vilken radioknapp som är vald
-            List<Vehicle> filteredList;
+            IEnumerable<Vehicle> filteredList;
 
             if (radioCar.IsChecked)
             {
-                filteredList = vehicleList.Where(v => v.VehicleType == Vehicle.Type.Bil).ToList();
+                filteredList = vehicleList.OfType<Car>();
             }
             else if (radioMC.IsChecked)
             {
-                filteredList = vehicleList.Where(v => v.VehicleType == Vehicle.Type.MC).ToList();
+                filteredList = vehicleList.OfType<MC>();
             }
             else if (radioTruck.IsChecked)
             {
-                filteredList = vehicleList.Where(v => v.VehicleType == Vehicle.Type.Lastbil).ToList();
+                filteredList = vehicleList.OfType<Truck>();
             }
             else
             {
