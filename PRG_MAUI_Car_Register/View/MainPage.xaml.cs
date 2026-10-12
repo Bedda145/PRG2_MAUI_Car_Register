@@ -23,20 +23,28 @@ using PRG_MAUI_Car_Register.Model;
                 switch (pickerType.SelectedIndex)
                 {
                     case 0:
-                        vehicle = new Car();
+                        vehicle = new Volvo();
                         break;
                     case 1:
-                        vehicle = new MC();
+                        vehicle = new Fiat();
                         break;
                     case 2:
-                        vehicle = new Truck();
+                        vehicle = new Yamaha();
+                        break;
+                    case 3:
+                        vehicle = new Ducati();
+                        break;
+                    case 4:
+                        vehicle = new Scania();
+                        break;
+                    case 5:
+                        vehicle = new MercedesBenz();
                         break;
                     default:
                         throw new ArgumentException("Välj en fordonstyp.");
                 }
 
                 vehicle.RegistrationNumber = entryRegistrationNumber.Text; ;
-                vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
                 vehicle.Year = entryYear.Text;
 
@@ -105,7 +113,6 @@ using PRG_MAUI_Car_Register.Model;
         private void ClearTextFields()
         {
             entryRegistrationNumber.Text = string.Empty;
-            entryManufacturer.Text = string.Empty;
             entryModel.Text = string.Empty;
             entryYear.Text = string.Empty;
         }

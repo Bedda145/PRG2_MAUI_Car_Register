@@ -1,6 +1,6 @@
 ﻿namespace PRG_MAUI_Car_Register.Model
 {
-    internal class Truck : Vehicle
+    internal abstract class Truck : Vehicle
     {
         private double loadCapacity;
 

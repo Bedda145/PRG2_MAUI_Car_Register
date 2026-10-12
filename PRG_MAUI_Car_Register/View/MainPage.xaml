@@ -9,18 +9,20 @@
             
             <HorizontalStackLayout Spacing="20" HorizontalOptions="StartAndExpand">
                 <Entry x:Name="entryRegistrationNumber" Placeholder="Registreringsnummer" />
-                <Label Text="Välj typ:" VerticalOptions="Center"/>
+                <Label Text="Välj märke:" VerticalOptions="Center"/>
                 <Picker x:Name="pickerType" TextColor="DarkRed">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>Bil</x:String>
-                        <x:String>MC</x:String>
-                        <x:String>Lastbil</x:String>
-                    </x:Array>
+                       <x:String>Volvo (Bil)</x:String>
+                       <x:String>Fiat (Bil)</x:String>
+                       <x:String>Yamaha (MC)</x:String>
+                       <x:String>Ducati (MC)</x:String>
+                       <x:String>Scania (Lastbil)</x:String>
+                       <x:String>Mercedes-Benz (Lastbil)</x:String>
+                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
             </HorizontalStackLayout>
-            <Entry x:Name="entryManufacturer" Placeholder="Tillverkare" />
             <Entry x:Name="entryModel" Placeholder="Modell" />
             <Entry x:Name="entryYear" Placeholder="Årsmodell (t.ex. 2024)" Keyboard="Numeric" MaxLength="4" />
             <Button x:Name="buttonRegister" Text="Registrera" Clicked="OnRegisterClicked" Margin="0,0,0,20" BackgroundColor="DarkRed"/>

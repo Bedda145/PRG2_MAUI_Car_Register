@@ -86,7 +86,7 @@ namespace PRG_MAUI_Car_Register.Model
         public string Manufacturer
         {
             get { return manufacturer; }
-            set { manufacturer = ValidateName(value, "Märke"); }
+            protected set { manufacturer = ValidateName(value, "Märke"); }
         }
 
         private string ValidateName(string value, string fieldName)

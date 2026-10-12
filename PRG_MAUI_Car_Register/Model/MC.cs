@@ -1,6 +1,6 @@
 ﻿namespace PRG_MAUI_Car_Register.Model
 {
-    internal class MC : Vehicle
+    internal abstract class MC : Vehicle
     {
         private string category = string.Empty;
 
