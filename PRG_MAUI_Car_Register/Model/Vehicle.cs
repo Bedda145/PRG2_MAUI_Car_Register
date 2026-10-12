@@ -116,6 +116,13 @@ namespace PRG_MAUI_Car_Register.Model
         }
 
         public abstract string GetDescription();
+
+        public abstract int GetWheelCount();
+
+        public virtual string GetRequiredLicense()
+        {
+            return "B";
+        }
         public override string ToString()
         {
             return GetDescription();

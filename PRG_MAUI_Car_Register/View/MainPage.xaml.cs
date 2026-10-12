@@ -102,7 +102,9 @@ using PRG_MAUI_Car_Register.Model;
 
             if (foundVehicle != null)
             {
-                labelSearchResult.Text = $"Fordon hittat:\n{foundVehicle.GetDescription()}";
+                labelSearchResult.Text = $"Fordon hittat:\n{foundVehicle.GetDescription()}\n" +
+                                         $"Antal hjul: {foundVehicle.GetWheelCount()}\n" +
+                                         $"Körkort som krävs: {foundVehicle.GetRequiredLicense()}";
             }
             else
             {

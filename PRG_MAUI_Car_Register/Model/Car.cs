@@ -17,6 +17,10 @@
             }
         }
 
+        public override int GetWheelCount()
+        {
+            return 4;
+        }
         public override string GetDescription()
         {
             return $"{RegistrationNumber}\tBil\t{Manufacturer}\t{Model}\t{Year}";

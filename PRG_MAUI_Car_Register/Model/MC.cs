@@ -17,6 +17,15 @@
             }
         }
 
+        public override int GetWheelCount()
+        {
+            return 2;
+        }
+
+        public override string GetRequiredLicense()
+        {
+            return "A";
+        }
         public override string GetDescription()
         {
             return $"{RegistrationNumber}\tMC\t{Manufacturer}\t{Model}\t{Year}";
