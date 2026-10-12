@@ -16,7 +16,22 @@
         {
             try
             {
-                Vehicle vehicle = new Vehicle((Vehicle.Type)pickerType.SelectedIndex);
+                Vehicle vehicle;
+
+                switch (pickerType.SelectedIndex)
+                {
+                    case 0:
+                        vehicle = new Car();
+                        break;
+                    case 1:
+                        vehicle = new MC();
+                        break;
+                    case 2:
+                        vehicle = new Truck();
+                        break;
+                    default:
+                        throw new ArgumentException("Välj en fordonstyp.");
+                }
 
                 vehicle.RegistrationNumber = entryRegistrationNumber.Text; ;
                 vehicle.Manufacturer = entryManufacturer.Text;
