@@ -6,42 +6,45 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
             <Image Source="car.jpg" Aspect="AspectFit" HeightRequest="150" Margin="0,0,0,20"/>
-            
+
             <HorizontalStackLayout Spacing="20" HorizontalOptions="StartAndExpand">
-                <Entry x:Name="entryRegistrationNumber" Placeholder="Registreringsnummer" />
+                <Entry Text="{Binding RegistrationNumber}" Placeholder="Registreringsnummer" />
                 <Label Text="Välj märke:" VerticalOptions="Center"/>
-                <Picker x:Name="pickerType" TextColor="DarkRed">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                       <x:String>Volvo (Bil)</x:String>
-                       <x:String>Fiat (Bil)</x:String>
-                       <x:String>Yamaha (MC)</x:String>
-                       <x:String>Ducati (MC)</x:String>
-                       <x:String>Scania (Lastbil)</x:String>
-                       <x:String>Mercedes-Benz (Lastbil)</x:String>
-                     </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                <Picker ItemsSource="{Binding Brands}"
+                        SelectedIndex="{Binding SelectedBrandIndex}"
+                        TextColor="DarkRed" />
             </HorizontalStackLayout>
-            <Entry x:Name="entryModel" Placeholder="Modell" />
-            <Entry x:Name="entryYear" Placeholder="Årsmodell (t.ex. 2024)" Keyboard="Numeric" MaxLength="4" />
-            <Button x:Name="buttonRegister" Text="Registrera" Clicked="OnRegisterClicked" Margin="0,0,0,20" BackgroundColor="DarkRed"/>
+
+            <Entry Text="{Binding VehicleModel}" Placeholder="Modell" />
+            <Entry Text="{Binding Year}" Placeholder="Årsmodell (t.ex. 2024)" Keyboard="Numeric" MaxLength="4" />
+
+            <Button Text="Registrera"
+                    Command="{Binding RegisterCommand}"
+                    BackgroundColor="DarkRed"
+                    TextColor="White" />
+
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" Margin="0,0,0,20" />
 
             <Label Text="Kategori:" FontAttributes="Bold" />
-            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20" Spacing="10" >
-                <RadioButton x:Name="radioAll" Content="Alla" IsChecked="True" CheckedChanged="OnRadioCheckedChanged" />
-                <RadioButton x:Name="radioCar" Content="Bilar" CheckedChanged="OnRadioCheckedChanged" />
-                <RadioButton x:Name="radioMC" Content="MC" CheckedChanged="OnRadioCheckedChanged" />
-                <RadioButton x:Name="radioTruck" Content="Lastbil" CheckedChanged="OnRadioCheckedChanged" />
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20" Spacing="10">
+                <Button Text="Alla" Command="{Binding FilterCommand}" CommandParameter="Alla" BackgroundColor="DarkRed" TextColor="White" />
+                <Button Text="Bilar" Command="{Binding FilterCommand}" CommandParameter="Bil" BackgroundColor="DarkRed" TextColor="White" />
+                <Button Text="MC" Command="{Binding FilterCommand}" CommandParameter="MC" BackgroundColor="DarkRed" TextColor="White" />
+                <Button Text="Lastbil" Command="{Binding FilterCommand}" CommandParameter="Lastbil" BackgroundColor="DarkRed" TextColor="White" />
             </HorizontalStackLayout>
 
-            <ListView x:Name="listViewVehicles" Margin="0,0,0,20"/>
+            <ListView ItemsSource="{Binding VisibleVehicles}" Margin="0,0,0,20" />
 
             <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="20">
-                <Entry x:Name="entrySearchRegistrationNumber" HorizontalOptions="FillAndExpand" Placeholder="Sök på registreringsnummer"></Entry>
-                <Button x:Name="buttonSearch" Text="Sök" HorizontalOptions="End" BackgroundColor="DarkRed" TextColor="White" Clicked="OnSearchClicked"/>
+                <Entry Text="{Binding SearchText}" HorizontalOptions="FillAndExpand" Placeholder="Sök på registreringsnummer" />
+                <Button Text="Sök"
+                        Command="{Binding SearchCommand}"
+                        HorizontalOptions="End"
+                        BackgroundColor="DarkRed"
+                        TextColor="White" />
             </HorizontalStackLayout>
-            <Label x:Name="labelSearchResult" Text="Sökresultat visas här..." TextColor="DarkRed" Margin="0,20,0,0"/>
+
+            <Label Text="{Binding SearchResult}" TextColor="DarkRed" Margin="0,20,0,0" />
         </VerticalStackLayout>
     </ScrollView>
 
