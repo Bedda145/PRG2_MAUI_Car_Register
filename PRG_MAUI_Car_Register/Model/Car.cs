@@ -1,6 +1,6 @@
 ﻿namespace PRG_MAUI_Car_Register.Model
 {
-    internal abstract class Car : Vehicle
+    public abstract class Car : Vehicle
     {
         private int doors;
 

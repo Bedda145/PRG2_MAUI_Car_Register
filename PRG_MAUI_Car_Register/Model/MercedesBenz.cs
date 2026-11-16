@@ -1,6 +1,6 @@
 ﻿namespace PRG_MAUI_Car_Register.Model
 {
-    internal class MercedesBenz : Truck
+    public class MercedesBenz : Truck
     {
         public MercedesBenz()
         {
